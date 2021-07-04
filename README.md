@@ -3,7 +3,7 @@
 Follow up from repo [github.com/oscar6echo/tinygo-wasm-demo](https://github.com/oscar6echo/tinygo-wasm-demo).
 
 - [Go package syscall/js doc](https://pkg.go.dev/syscall/js)
-- ObservableHQ notebook [WASM compiled with tinyGo - demo 2](https://observablehq.com/@oscar6echo/wasm-compiled-with-tinygo-demo-2)
+- ObservableHQ notebook [WASM from TinyGo - demo 2](https://observablehq.com/@oscar6echo/wasm-from-tinygo-demo-2)
 
 # Overview
 
