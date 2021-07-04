@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WASM</title>
+  </head>
+  <body>
+    <h3>TinyGo WASM Demo 2</h3>
+    <p>Open console</p>
+    <button onClick="run();" id="run-button" disabled>Run</button>
+
+    <script src="wasm_exec.js"></script>
+    <script>
+      const main = async () => {
+        const go = new Go(); // Defined in wasm_exec.js
+
+        const WASM_URL = "main_js.wasm";
+        const obj = await WebAssembly.instantiateStreaming(
+          fetch(WASM_URL),
+          go.importObject
+        );
+        window.wasm = obj.instance;
+        go.run(wasm);
+        console.log("WASM functions added to global scope:", window.wasmDoc());
+
+        document.getElementById("run-button").disabled = false;
+      };
+
+      main();
+
+      async function run() {
+        console.log("WASM functions added to global scope:", window.wasmDoc());
+        console.log(
+          "splitter('toto,titi,tata') =",
+          window.splitter("toto,titit,tata")
+        );
+        const primes = window.calcPrimes(10, 100);
+        console.log("primes(10, 100) =", primes);
+        console.log("primeFactors(99) =", window.calcPrimeFactors(99));
+        console.log(
+          "primeFactors(99) squared =",
+          window.arrayOperation("mult", [primes, primes])
+        );
+      }
+    </script>
+  </body>
+</html>
