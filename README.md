@@ -5,7 +5,7 @@ Follow up from repo [github.com/oscar6echo/tinygo-wasm-demo](https://github.com/
 - [Go package syscall/js doc](https://pkg.go.dev/syscall/js)
 - ObservableHQ notebook [WASM from TinyGo - demo 2](https://observablehq.com/@oscar6echo/wasm-from-tinygo-demo-2)
 
-# Overview
+## Overview
 
 This repo contains to sample packages:
 
@@ -40,6 +40,7 @@ go test -v
 ```bash
 # compile - tinygo
 tinygo build -o ./html/main_js.wasm -target wasm ./main.go
+tinygo build -o ./html/main_js.wasm -target wasm -no-debug ./main.go
 
 # boiler plate
 cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js ./html
@@ -52,7 +53,7 @@ mv ./html/wasm_exec.js ./html/wasm_exec_mod.js
 # change global.Go = class{...} to export const Go = class{...}
 ```
 
-## Serve
+## Browser
 
 Serve folder `/html`:
 
@@ -61,3 +62,10 @@ go run serve/serve.go
 ```
 
 Open <http://localhost:8082>
+
+## Node
+
+```bash
+# run
+node wasm_exec.js main_js.wasm
+```
