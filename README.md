@@ -39,7 +39,7 @@ go test -v
 
 ```bash
 # compile - tinygo
-tinygo build -o ./html/main_js.wasm -target wasm ./main_js.go
+tinygo build -o ./html/main_js.wasm -target wasm ./main.go
 
 # boiler plate
 cp $(tinygo env TINYGOROOT)/targets/wasm_exec.js ./html
